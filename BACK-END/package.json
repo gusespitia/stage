@@ -1,0 +1,24 @@
+{
+  "name": "back-end-api-users",
+  "version": "1.0.0",
+  "description": "api from users in userfront",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gusespitia/stage-back-end.git"
+  },
+  "author": "Gus Espitia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gusespitia/stage-back-end/issues"
+  },
+  "homepage": "https://github.com/gusespitia/stage-back-end#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  }
+}
