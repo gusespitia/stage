@@ -1,11 +1,23 @@
-module.exports = {
+// Cargar las variables de entorno desde el archivo .env
+import dotenv from "dotenv";
+dotenv.config();
+
+// Obtener la URL del archivo actual
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// knexfile.js
+const knexConfig = {
   development: {
-    client: "mysql", // Cambiamos el cliente a 'mysql'
+    client: "mysql",
     connection: {
-      host: "ID396978_reactApp.db.webhosting.be", // Cambiamos la configuración de conexión
-      user: "ID396978_reactApp", // Nombre de usuario de MySQL
-      password: "k0Rk95Aq022945918312", // Contraseña de MySQL
-      database: "ID396978_reactApp", // Nombre de la base de datos de MySQL
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
     },
     migrations: {
       directory: __dirname + "/db/migrations",
@@ -15,8 +27,8 @@ module.exports = {
     },
   },
   production: {
-    client: "mysql", // Cambiamos el cliente a 'mysql'
-    connection: process.env.DATABASE_URL, // Aquí puedes mantener la variable de entorno si estás utilizando alguna herramienta de aprovisionamiento como Heroku
+    client: "mysql",
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: __dirname + "/db/migrations",
     },
@@ -25,3 +37,5 @@ module.exports = {
     },
   },
 };
+
+export { knexConfig };
