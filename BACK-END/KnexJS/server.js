@@ -1,8 +1,6 @@
-// server.js
-
 import express from "express";
 import bodyParser from "body-parser";
-import { getAllTodos } from "./queries.js"; // Import query functions
+import { getAllTodos, getTodoById } from "./queries.js"; // Import query functions
 
 const port = process.env.PORT || 8010;
 const app = express();
@@ -18,6 +16,18 @@ app.get("/todos", async (req, res) => {
   } catch (error) {
     console.error("Error fetching todos:", error);
     res.status(500).json({ error: "Error fetching todos" });
+  }
+});
+
+// Route handler to get todo by id using query function
+app.get("/todos/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const todo = await getTodoById(id);
+    res.json(todo);
+  } catch (error) {
+    console.error("Error fetching todo:", error);
+    res.status(500).json({ error: "Error fetching todo" });
   }
 });
 
