@@ -2,10 +2,10 @@ module.exports = {
   development: {
     client: "mysql", // Cambiamos el cliente a 'mysql'
     connection: {
-      host: "localhost", // Cambiamos la configuración de conexión
-      user: "tu_usuario_mysql", // Nombre de usuario de MySQL
-      password: "tu_contraseña_mysql", // Contraseña de MySQL
-      database: "tu_base_de_datos_mysql", // Nombre de la base de datos de MySQL
+      host: "ID396978_reactApp.db.webhosting.be", // Cambiamos la configuración de conexión
+      user: "ID396978_reactApp", // Nombre de usuario de MySQL
+      password: "k0Rk95Aq022945918312", // Contraseña de MySQL
+      database: "ID396978_reactApp", // Nombre de la base de datos de MySQL
     },
     migrations: {
       directory: __dirname + "/db/migrations",
