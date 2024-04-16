@@ -6,8 +6,6 @@ import { knexConfig } from "./knexfile.js";
 // Create a Knex instance
 const db = knex(knexConfig["development"]);
 
-
-
 // Function to get all todos
 export async function getAllTodos() {
   try {
@@ -28,7 +26,17 @@ export async function getTodoById(id) {
   }
 }
 
+// queries.js
 
-
-
-// Add other query functions as needed
+// Función para agregar un nuevo todo
+export async function postTodo(title) {
+  try {
+    // Insertar el nuevo todo en la base de datos
+    const [newTodoId] = await db("todos").insert({ title });
+    // Obtener el todo recién insertado
+    const newTodo = await db("todos").where("id", newTodoId).first();
+    return newTodo;
+  } catch (error) {
+    throw new Error("Error adding todo:", error);
+  }
+}
