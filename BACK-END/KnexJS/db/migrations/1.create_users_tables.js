@@ -5,14 +5,15 @@
 exports.up = function (knex) {
   return knex.schema
     .createTable("users", function (table) {
-      table.increments("id");
+      table.increments("id").primary(); // Esto define la columna 'id' como clave primaria
       table.string("name").notNullable();
       table.string("email").notNullable();
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     })
+
     .createTable("todos", function (table) {
-      table.increments("id");
+      table.increments("id").primary(); // Esto define la columna 'id' como clave primaria
       table.string("title").notNullable();
       table.boolean("is_active").defaultTo(false);
       table.timestamp("created_at").defaultTo(knex.fn.now());
